@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>scratch-off</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <h1>HHhhh</h1>
+    <p>fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+      fhjfhjfkhkjhfjdsddfslkjfkjdkjflksdkfjlkdfjlksjdl
+    <canvas id="cnv"></canvas>
+
+
+    <script type="text/javascript">
+      const area = document.body.getBoundingClientRect();
+      const cnv = document.getElementById('cnv');
+      const ctx = cnv.getContext('2d');
+
+      cnv.width = area.width;
+      cnv.height = area.height;
+      ctx.fillStyle = "black";
+
+      var cond = false;
+      function makePointer(x,y){
+        if(cond){
+          ctx.beginPath();
+          ctx.arc(x, y, 7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
+/*********mouse********/
+      window.addEventListener("mousedown", () => cond = true);
+      window.addEventListener("mouseup", () => cond = false);
+      window.addEventListener("mousemove", (ev) => {
+        makePointer(ev.x, ev.y);
+      });
+/********touch*********/
+      window.addEventListener("touchstart", () => cond = true);
+      window.addEventListener("touchend", () => cond = false);
+      window.addEventListener("touchmove", (ev) => {
+        makePointer(ev.touches[0].pageX, ev.touches[0].pageY);
+      });
+
+
+    </script>
+
+  </body>
+</html>
